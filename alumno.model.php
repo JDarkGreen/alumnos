@@ -63,8 +63,45 @@ class AlumnoModel{
 
 		}catch( Exception $e ){ die( $e->getMessage() ); }
 
-
 	}
+
+
+	public function Eliminar($id)
+	{
+		try{
+
+			$stm = $this->pdo->prepare("DELETE FROM alumnos WHERE id = ?");
+			$stm->execute(array($id));
+
+		}catch(Exception $e){ die($e->getMessage() ); }
+	}
+
+
+	public function Actualizar(Alumno $data)
+	{
+		try{
+
+			$sql = "UPDATE alumnos SET 
+					Nombre = ?,
+					Apellido = ?,
+					Sexo = ?,
+					FechaNac = ?,
+					WHERE id = ? ";
+
+			$this->pdo->prepare($sql)
+					  ->execute(
+					  		array(
+					  			$data->__GET('Nombre'),
+					  			$data->__GET('Apellido'),
+					  			$data->__GET('Sexo'),
+					  			$data->__GET('FechaNac'),
+					  			$data->__GET('id'),
+					  		)
+					  	);
+
+		}catch( Exception $e){ die($e->getMessage()); }
+	}
+
 
 
 
