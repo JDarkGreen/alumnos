@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+require_once 'alumno.entidad.php'; 
 
 class AlumnoModel{
 
@@ -96,6 +98,25 @@ class AlumnoModel{
 					  			$data->__GET('Sexo'),
 					  			$data->__GET('FechaNac'),
 					  			$data->__GET('id'),
+					  		)
+					  	);
+
+		}catch( Exception $e){ die($e->getMessage()); }
+	}
+
+	public function Registrar(Alumno $data)
+	{
+		try{
+
+			$sql = "INSERT INTO alumnos(Nombre,Apellido,Sexo,FechaNac) VALUES (?,?,?,?)";
+
+			$this->pdo->prepare($sql)
+					  ->execute(
+					  		array(
+					  			$data->__GET('Nombre'),
+					  			$data->__GET('Apellido'),
+					  			$data->__GET('Sexo'),
+					  			$data->__GET('FechaNac'),
 					  		)
 					  	);
 

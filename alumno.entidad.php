@@ -6,7 +6,7 @@ class Alumno{
 	private $Nombre;
 	private $Apellido;
 	private $Sexo;
-	private $FechaNav;
+	private $FechaNac;
 
 	public function __GET( $k ){
 		return $this->$k;
