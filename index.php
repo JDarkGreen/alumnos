@@ -66,11 +66,11 @@
 		<table>
 			<tr>
 				<th>Nombre</th>
-				<td><input type="text" name="Nombre" value="<?= $alm->__GET('Nombre')  ?>" /></td>
+				<td><input required type="text" name="Nombre" value="<?= $alm->__GET('Nombre')  ?>" /></td>
 			</tr>
 			<tr>
 				<th>Apellido</th>
-				<td><input type="text" name="Apellido" value="<?= $alm->__GET('Apellido')  ?>" /></td>
+				<td><input required type="text" name="Apellido" value="<?= $alm->__GET('Apellido')  ?>" /></td>
 			</tr>
 			<tr>
 				<th>Sexo</th>
@@ -83,12 +83,34 @@
 			</tr>
 			<tr>
 				<th>FechaNac</th>
-				<td><input type="text" name="FechaNac" value="<?= $alm->__GET('FechaNac')  ?>" /></td>
+				<td><input required type="text" name="FechaNac" value="<?= $alm->__GET('FechaNac')  ?>" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><button type="submit">Guardar</button></td>
 			</tr>
 		</table>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Sexo</th>
+					<th>Nacimiento</th>
+				</tr>
+			</thead>
+			<?php foreach( $model->Listar() as $r ) : ?>
+				<tbody>
+				<td><?= $r->__GET('Nombre'); ?></td>
+				<td><?= $r->__GET('Apellido'); ?></td>
+				<td><?= $r->__GET('Sexo') == 1 ? 'H' : 'F' ?></td>
+				<td><?= $r->__GET('FechaNac'); ?></td>
+				<td><a href="?action=editar&id=<?= $r->id ?>">Editar</a></td>
+				<td><a href="?action=eliminar&id=<?= $r->id ?>">Eliminar</a></td>
+				</tbody>
+			<?php endforeach; ?>
+		</table>
+
 	</form>
 
 	

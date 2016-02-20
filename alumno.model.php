@@ -24,8 +24,8 @@ class AlumnoModel{
 			$result = array();
 
 			$stm = $this->pdo->prepare("SELECT * FROM alumnos");
-			$smt->execute();
-			$res = $smt->fetchAll(PDO::FETCH_OBJ);
+			$stm->execute();
+			$res = $stm->fetchAll(PDO::FETCH_OBJ);
 
 			foreach ( $res as $r ) {
 
