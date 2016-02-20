@@ -50,12 +50,13 @@ class AlumnoModel{
 
 		try{
 
-			$stm = $this->pdo->prepare("SELECT * FROM alumnos WHERE id= ? ");
+			$stm = $this->pdo->prepare("SELECT * FROM alumnos WHERE id = ?");
 			$stm->execute( array($id) );
-			$res = $stm->fetchAll(PDO::FECTH_OBJ);
+			$res = $stm->fetch(PDO::FETCH_OBJ);
 
 			$alm = new Alumno();
 
+			$alm->__SET('id', $res->id );
 			$alm->__SET('Nombre', $res->Nombre );
 			$alm->__SET('Apellido', $res->Apellido );
 			$alm->__SET('Sexo', $res->Sexo );
@@ -87,8 +88,8 @@ class AlumnoModel{
 					Nombre = ?,
 					Apellido = ?,
 					Sexo = ?,
-					FechaNac = ?,
-					WHERE id = ? ";
+					FechaNac = ?
+					WHERE id = ?";
 
 			$this->pdo->prepare($sql)
 					  ->execute(

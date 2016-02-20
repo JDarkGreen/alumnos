@@ -13,7 +13,7 @@
 		switch ( $_REQUEST['action'] ) {
 
 			case 'actualizar':
-				$alm->__SET('id',$_REQUEST['id']);
+				$alm->__SET('id', $_REQUEST['id'] );
 				$alm->__SET('Nombre',$_REQUEST['Nombre']);
 				$alm->__SET('Apellido',$_REQUEST['Apellido']);
 				$alm->__SET('Sexo',$_REQUEST['Sexo']);
